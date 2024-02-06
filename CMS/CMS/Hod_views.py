@@ -200,4 +200,42 @@ def Delete_Course(request, id):
 #Staff CRUD
 @login_required(login_url='/')
 def Add_Staff(request):
+    if request.method == 'POST':
+        profile_pic = request.FILES.get('profile_pic')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+
+        if CustomUser.objects.filter(email = email).exists():
+            messages.warning(request, "Email is already taken")
+            return redirect('Add_Staff')
+        
+        if CustomUser.objects.filter(username = username).exists():
+            messages.warning(request, "Username is already taken")
+            return redirect('Add_Staff')
+        
+        else:
+            user  = CustomUser(
+                first_name = first_name,
+                last_name = last_name,
+                username = username,
+                email = email,
+                profile_pic = profile_pic,
+                user_type = 2,
+                
+            )
+            staff = Staff(
+                admin = user,
+                address = address,
+                gender = gender,
+            )
+
+            user.set_password(password)
+            user.save()
+            staff.save()
+            messages.success(request , 'Staff are added Successfully')
     return render(request , 'Hod/add_staff.html')
