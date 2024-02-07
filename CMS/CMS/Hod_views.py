@@ -243,4 +243,10 @@ def Add_Staff(request):
 
 @login_required(login_url='/')
 def View_Staff(request):
-    return render (request, 'Hod/view_staff.html')
+    staff = Staff.objects.all()
+
+    context ={
+        'staff' : staff,
+    }
+
+    return render(request, 'Hod/view_staff.html' , context)
