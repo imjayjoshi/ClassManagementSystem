@@ -126,8 +126,8 @@ def Update_Student(request):
         course = Course.objects.get(id = course_id)
         student.course_id = course
 
-        sesion = Session_Year.objects.get(id = session_year_id)
-        student.session_year_id = sesion
+        session = Session_Year.objects.get(id = session_year_id)
+        student.session_year_id = session
 
         student.save()
         messages.success(request, 'Your Profile Updated Successfully !')
@@ -259,3 +259,46 @@ def Edit_Staff(request, id):
         'staff' : staff,
     }
     return render(request , 'Hod/edit_staff.html' , context)
+
+@login_required(login_url='/')
+def Update_Staff(request):
+    if request.method == 'POST':
+        staff_id = request.POST.get('staff_id')
+
+        profile_pic = request.FILES.get('profile_pic')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+
+
+        user = CustomUser.objects.get(id = staff_id)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
+        user.username = username
+
+        if password != None and password != '':
+            user.set_password(password)
+        if profile_pic != None and profile_pic != '':
+            user.profile_pic = profile_pic
+        user.save()
+
+        staff = Staff.objects.get(admin = staff_id)
+        staff.address = address
+        staff.gender = gender
+
+        staff.save()
+        messages.success(request, 'Your Profile Updated Successfully !')
+        return redirect('View_Staff')
+    return render(request, 'Hod/edit_staff.html')
+
+@login_required(login_url='/')
+def Delete_Staff(request, admin):
+    staff = CustomUser.objects.get(id = admin)
+    staff.delete()
+    messages.success(request , "Staff deleted Successfully !")
+    return redirect('View_Staff')
