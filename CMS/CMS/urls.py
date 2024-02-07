@@ -26,6 +26,7 @@ urlpatterns = [
 
     # Staff
     path('Hod/Staff/Add', Hod_views.Add_Staff, name='Add_Staff'),
+    path('Hod/Staff/View', Hod_views.View_Staff, name='View_Staff'),
 
 
     #Course
@@ -34,9 +35,6 @@ urlpatterns = [
     path('Hod/Course/Edit/<str:id>', Hod_views.Edit_Course, name='Edit_Course'),
     path('Hod/Course/Update', Hod_views.Update_Course, name='Update_Course'),
     path('Hod/Course/Delete/<str:id>', Hod_views.Delete_Course, name='Delete_Course'),
-
-    #Staff Panel
-    
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

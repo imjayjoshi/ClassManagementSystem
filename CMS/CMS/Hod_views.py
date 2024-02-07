@@ -239,3 +239,8 @@ def Add_Staff(request):
             staff.save()
             messages.success(request , 'Staff are added Successfully')
     return render(request , 'Hod/add_staff.html')
+
+
+@login_required(login_url='/')
+def View_Staff(request):
+    return render (request, 'Hod/view_staff.html')
