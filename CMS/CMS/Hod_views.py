@@ -250,3 +250,12 @@ def View_Staff(request):
     }
 
     return render(request, 'Hod/view_staff.html' , context)
+
+@login_required(login_url='/')
+def Edit_Staff(request, id):
+    staff = Staff.objects.get(id = id)
+
+    context ={
+        'staff' : staff,
+    }
+    return render(request , 'Hod/edit_staff.html' , context)

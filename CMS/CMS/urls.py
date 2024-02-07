@@ -27,6 +27,8 @@ urlpatterns = [
     # Staff
     path('Hod/Staff/Add', Hod_views.Add_Staff, name='Add_Staff'),
     path('Hod/Staff/View', Hod_views.View_Staff, name='View_Staff'),
+    path('Hod/Staff/Edit/<str:id>', Hod_views.Edit_Staff, name='Edit_Staff'),
+
 
 
     #Course
