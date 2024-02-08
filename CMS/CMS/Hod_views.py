@@ -302,3 +302,8 @@ def Delete_Staff(request, admin):
     staff.delete()
     messages.success(request , "Staff deleted Successfully !")
     return redirect('View_Staff')
+
+#Subject CRUD
+@login_required(login_url='/')
+def Add_Subject(request):
+    return render(request, 'Hod/add_subject.html')
