@@ -50,6 +50,4 @@ class Staff(models.Model):
 
     def __str__(self):
         return self.admin.username
-    
-class Subject(models.Model):
-    
+
