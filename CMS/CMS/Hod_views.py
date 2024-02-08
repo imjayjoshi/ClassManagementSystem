@@ -306,4 +306,11 @@ def Delete_Staff(request, admin):
 #Subject CRUD
 @login_required(login_url='/')
 def Add_Subject(request):
-    return render(request, 'Hod/add_subject.html')
+    course = Course.objects.all()
+    staff = Staff.objects.all()
+
+    context = {
+        'course' : course , 
+        'staff' : staff ,
+    }
+    return render(request, 'Hod/add_subject.html' , context)
