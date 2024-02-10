@@ -329,7 +329,7 @@ def Add_Subject(request):
     
     context = {
         'course' : course , 
-        'stasff' : staff ,
+        'staff' : staff ,
     }
     return render(request, 'Hod/add_subject.html' , context)
 
@@ -347,17 +347,42 @@ def View_Subject(request):
 @login_required(login_url='/')
 def Edit_Subject(request, id):
     subject = Subject.objects.get(id = id)
-
+    course = Course.objects.all()
+    staff = Staff.objects.all()
+    
     context ={
         'subject' : subject,
+        'course' : course , 
+        'staff' : staff ,
     }
     return render(request , 'Hod/edit_subject.html' , context)
 
 @login_required(login_url='/')
 def Update_Subject(request):
-     render(request , 'Hod/edit_subject.html')
+     if request.method == 'POST':
+          subject_id = request.POST.get('subject_id')
+          course_id = request.POST.get('course_id')
+          staff_id = request.POST.get('staff_id')
+          subject_name = request.POST.get('subject_name')
+          
+          course = Course.objects.get(id = course_id)
+          staff = Staff.objects.get(id = staff_id)
+          
+          subject = Subject(
+              id = subject_id,
+              name = subject_name,
+              course = course,
+              staff = staff,            
+          )
+
+          subject.save()
+          messages.success(request, 'Subject are Successfully Updated')
+          
+          return redirect('View_Subject')
 
 @login_required(login_url='/')
-def Delete_Subject(request, admin):
+def Delete_Subject(request, id):
+    subject = Subject.objects.get(id = id)
+    subject.delete()
     messages.success(request , "Subject deleted Successfully !")
     return redirect('View_Subject')

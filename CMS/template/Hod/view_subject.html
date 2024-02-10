@@ -13,7 +13,7 @@
             </div>
             <div class="col-auto text-right float-right ml-auto">
                 <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-                <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                <a href="{% url 'Add_Subject' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
                                     <td>{{i.id}}</td>
                                     <td>{{i.name}}</td>
                                     <td>{{i.course}}</td>
-                                    <td>{{i.staff}}</td>
+                                    <td>{{i.staff.admin.first_name}}&nbsp;{{i.staff.admin.last_name}}</td>
                                     <td>{{i.created_at}}</td>
                                     <td>{{i.updated_at}}</td>
                                     <td class="text-right">
