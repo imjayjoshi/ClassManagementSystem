@@ -332,3 +332,32 @@ def Add_Subject(request):
         'stasff' : staff ,
     }
     return render(request, 'Hod/add_subject.html' , context)
+
+@login_required(login_url='/')
+def View_Subject(request):
+    subject = Subject.objects.all()
+
+    context ={
+        'subject' : subject,
+    }
+
+    return render(request , 'Hod/view_subject.html' , context)
+
+
+@login_required(login_url='/')
+def Edit_Subject(request, id):
+    subject = Subject.objects.get(id = id)
+
+    context ={
+        'subject' : subject,
+    }
+    return render(request , 'Hod/edit_subject.html' , context)
+
+@login_required(login_url='/')
+def Update_Subject(request):
+     render(request , 'Hod/edit_subject.html')
+
+@login_required(login_url='/')
+def Delete_Subject(request, admin):
+    messages.success(request , "Subject deleted Successfully !")
+    return redirect('View_Subject')

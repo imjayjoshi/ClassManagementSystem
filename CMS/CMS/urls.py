@@ -40,6 +40,12 @@ urlpatterns = [
 
     #Subject
     path('Hod/Subject/Add', Hod_views.Add_Subject, name='Add_Subject'),
+    path('Hod/Subject/View', Hod_views.View_Subject, name='View_Subject'),
+    path('Hod/Subject/Edit/<str:id>', Hod_views.Edit_Subject, name='Edit_Subject'),
+    path('Hod/Subject/Update', Hod_views.Update_Subject, name='Update_Subject'),
+    path('Hod/Subject/Delete/<str:id>', Hod_views.Delete_Subject, name='Delete_Subject'),
+
+
     
 
 
