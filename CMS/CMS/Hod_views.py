@@ -309,8 +309,26 @@ def Add_Subject(request):
     course = Course.objects.all()
     staff = Staff.objects.all()
 
+    if request.method == 'POST':
+        subject_name = request.POST.get('subject_name')
+        course_id = request.POST.get('course_id')
+        staff_id = request.POST.get('staff_id')
+
+        course = Course.objects.get(id = course_id)
+        staff = Staff.objects.get(id = staff_id)
+
+        subject = Subject(
+            name = subject_name,
+            course = course,
+            staff = staff,
+        )
+
+        subject.save()
+        messages.success(request , "Subject Added Successfully")
+        return redirect ('Add_Subject')
+    
     context = {
         'course' : course , 
-        'staff' : staff ,
+        'stasff' : staff ,
     }
     return render(request, 'Hod/add_subject.html' , context)
