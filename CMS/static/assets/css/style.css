@@ -2897,6 +2897,7 @@ table.table-inbox tbody tr.checked {
   margin-bottom: 0;
 }
 .calendar-info h6 span {
+  color: #333333;
 }
 .calendar-info .calendar-blue {
   font-size: 12px;
