@@ -45,7 +45,12 @@ urlpatterns = [
     path('Hod/Subject/Update', Hod_views.Update_Subject, name='Update_Subject'),
     path('Hod/Subject/Delete/<str:id>', Hod_views.Delete_Subject, name='Delete_Subject'),
 
-
+    #Session
+    path('Hod/Session/Add', Hod_views.Add_Session, name='Add_Session'),
+    path('Hod/Session/View', Hod_views.View_Session, name='View_Session'),
+    path('Hod/Session/Edit/<str:id>', Hod_views.Edit_Session, name='Edit_Session'),
+    path('Hod/Session/Update', Hod_views.Update_Session, name='Update_Session'),
+    path('Hod/Session/Delete/<str:id>', Hod_views.Delete_Session, name='Delete_Session'),
     
 
 

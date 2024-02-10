@@ -386,3 +386,65 @@ def Delete_Subject(request, id):
     subject.delete()
     messages.success(request , "Subject deleted Successfully !")
     return redirect('View_Subject')
+
+#Session CRUD
+@login_required(login_url='/')
+def Add_Session(request):
+    if request.method == 'POST':
+        session_year_start = request.POST.get('session_start')
+        session_year_end = request.POST.get('session_end')
+
+        session = Session_Year(
+            session_start = session_year_start,
+            session_end = session_year_end,
+        )
+
+        session.save()
+        messages.success(request, 'Session Are Successfully Created')
+        return redirect('Add_Session')
+    return render(request , 'Hod/add_session.html')
+
+@login_required(login_url='/')
+def View_Session(request):
+    session = Session_Year.objects.all()
+
+    context ={
+        'session' : session,
+    }
+
+    return render(request , 'Hod/view_session.html' , context)
+
+
+@login_required(login_url='/')
+def Edit_Session(request, id):
+    session = Session_Year.objects.filter(id = id)
+
+    context = {
+        'session' : session,
+    }
+
+    return render(request , 'Hod/edit_session.html' , context)
+    
+
+@login_required(login_url='/')
+def Update_Session(request):
+    if request.method == 'POST':
+        session_id = request.POST.get('session_id')
+        session_year_start = request.POST.get('session_start')
+        session_year_end = request.POST.get('session_end')
+
+        session = Session_Year(
+            id = session_id,
+            session_start = session_year_start,
+            session_end = session_year_end,
+        )
+        session.save()
+        messages.success(request, 'Session Are Successfully Updated')
+        return redirect('View_Session')
+
+@login_required(login_url='/')
+def Delete_Session(request, id):
+    session = Session_Year.objects.get(id = id)
+    session.delete()
+    messages.success(request , "Session deleted Successfully !")
+    return redirect('View_Session')
