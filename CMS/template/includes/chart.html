@@ -6,7 +6,8 @@
         var options = {
             series: ['{{student_count}}', '{{staff_count}}', '{{course_count}}', '{{subject_count}}'],
             chart: {
-                width: 380,
+                width: 450,
+                height: 350,
                 type: 'pie',
             },
             labels: ['Student', 'Staff', 'Course', 'Subject'],
@@ -14,7 +15,7 @@
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 200
+                        width: 400
                     },
                     legend: {
                         position: 'bottom'
@@ -95,4 +96,29 @@
         }
 
     });
+
+    // Student & staff
+    var options = {
+        series: ['{{student_count}}', '{{staff_count}}'],
+        chart: {
+            type: 'donut',
+        },
+        labels: ['Student', 'Staff'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var chart = new ApexCharts(document.querySelector("#stud_staff"), options);
+    chart.render();
+
+
 </script>
