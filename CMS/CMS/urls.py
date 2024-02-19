@@ -53,5 +53,9 @@ urlpatterns = [
     path('Hod/Session/Delete/<str:id>', Hod_views.Delete_Session, name='Delete_Session'),
     
 
+    # STAFF panel
+    path('Staff/Home', Staff_views.HOME, name='staff_home'),
+
+
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -23,7 +23,7 @@ def doLogin(request):
             if user_type == '1':
                 return redirect('hod_home')
             elif user_type == '2':
-                return HttpResponse('This is Staff Dashboard')
+                return redirect('staff_home')
             elif user_type == '3':
                 return HttpResponse('This is Student Dashboard')
             elif user_type == '4':

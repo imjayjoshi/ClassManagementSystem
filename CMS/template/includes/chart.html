@@ -6,8 +6,8 @@
         var options = {
             series: ['{{student_count}}', '{{staff_count}}', '{{course_count}}', '{{subject_count}}'],
             chart: {
-                width: 450,
                 height: 350,
+                width: '100%',
                 type: 'pie',
             },
             labels: ['Student', 'Staff', 'Course', 'Subject'],
@@ -108,7 +108,8 @@
             breakpoint: 480,
             options: {
                 chart: {
-                    width: 200
+                    height: 350,
+                    width: '100%',
                 },
                 legend: {
                     position: 'bottom'
