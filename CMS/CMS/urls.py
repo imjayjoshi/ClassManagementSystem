@@ -51,7 +51,11 @@ urlpatterns = [
     path('Hod/Session/Edit/<str:id>', Hod_views.Edit_Session, name='Edit_Session'),
     path('Hod/Session/Update', Hod_views.Update_Session, name='Update_Session'),
     path('Hod/Session/Delete/<str:id>', Hod_views.Delete_Session, name='Delete_Session'),
-    
+
+
+    #Notification
+    path('Hod/Staff/Send_Notification', Hod_views.Staff_Send_Noti, name='Staff_Send_Noti'),
+    path('Hod/Staff/Save_Notification', Hod_views.Staff_Save_Noti, name='Staff_Save_Noti'),
 
     # STAFF panel
     path('Staff/Home', Staff_views.HOME, name='staff_home'),

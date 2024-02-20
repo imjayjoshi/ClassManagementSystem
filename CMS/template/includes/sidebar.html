@@ -54,7 +54,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="holiday.html"><i class="fa fa-bell"></i> <span>Send Staff Notification</span></a>
+                    <a href="{% url 'Staff_Send_Noti' %}"><i class="fa fa-bell"></i> <span>Send Staff
+                            Notification</span></a>
                 </li>
                 <li>
                     <a href="holiday.html"><i class="fa fa-bell"></i> <span>Send Student Notification</span></a>
@@ -107,7 +108,6 @@
                     <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> <span>Log Out</span></a>
                 </li>
             </ul>
-
             {% else %}
 
 
