@@ -950,7 +950,7 @@ def Delete_Session(request, id):
 @login_required(login_url='/')
 def Staff_Send_Noti(request):
     staff = Staff.objects.all()
-    see_notification = Staff_Notification.objects.all().order_by('-id')
+    see_notification = Staff_Notification.objects.all().order_by('-id')[0:5]
 
     context = {
         'staff' : staff,
