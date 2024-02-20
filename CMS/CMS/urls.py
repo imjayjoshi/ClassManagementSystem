@@ -59,7 +59,8 @@ urlpatterns = [
 
     # STAFF panel
     path('Staff/Home', Staff_views.HOME, name='staff_home'),
-
+    path('Staff/Notification', Staff_views.Notification, name='Notification'),
+    path('Staff/mark_as_read/<str:status>', Staff_views.mark_as_read, name='mark_as_read'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
