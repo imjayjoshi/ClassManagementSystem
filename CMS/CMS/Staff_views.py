@@ -27,3 +27,8 @@ def mark_as_read(request, status):
     notification.save()
 
     return redirect('Notification')
+
+@login_required(login_url='/')
+def Apply_Leave(request):
+    
+    return render(request , 'Staff/apply_leave.html')
